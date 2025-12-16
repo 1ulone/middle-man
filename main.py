@@ -21,8 +21,7 @@ if not firebase_admin._apps:
 @app.post("/upload")
 async def upload(request: Request):
     data = await request.json()
-    ref = db.reference("/device_data")
-    # Push data to Firebase
-    ref.push(data)
+    ref = db.reference("/latest_data")
+    ref.set(data)
     return {"ok": True}
 
