@@ -1,8 +1,17 @@
+from fastapi import FastAPI, Request
+
+app = FastAPI()
+
+@app.post("/upload")
+async def upload(request: Request):
+    data = await request.json()
+    print("Received from A9G:", data)
+    return {"ok": True}
+
 # import os
 # import base64
 # import tempfile
-from fastapi import FastAPI, Request
-
+# from fastapi import FastAPI, Request
 # import firebase_admin
 # from firebase_admin import credentials, db
 #
@@ -19,14 +28,14 @@ from fastapi import FastAPI, Request
 # firebase_admin.initialize_app(cred, {
 #     "databaseURL": os.environ["FIREBASE_DB_URL"]
 # })
-
-app = FastAPI()
-
-@app.post("/upload")
-async def upload(req: Request):
-    data = await req.json()
-
-    #ref = db.reference("d01")
-    #ref.push(data)
-
-    return {"ok": True}
+#
+# app = FastAPI()
+#
+# @app.post("/upload")
+# async def upload(req: Request):
+#     data = await req.json()
+#
+#     #ref = db.reference("d01")
+#     #ref.push(data)
+#
+#     return {"ok": True}
