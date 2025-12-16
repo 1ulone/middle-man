@@ -1,10 +1,11 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException
 import firebase_admin
 from firebase_admin import credentials, db
+import os
 
 cred = credentials.Certificate("serviceAccount.json")
 firebase_admin.initialize_app(cred, {
-    "databaseURL": "https://track-lace-default-rtdb.firebaseio.com"
+    "databaseURL": os.environ["FIREBASE_DB_URL"]
 })
 
 app = FastAPI()
