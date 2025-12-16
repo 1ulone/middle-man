@@ -4,7 +4,7 @@ from firebase_admin import credentials, db
 
 cred = credentials.Certificate("serviceAccount.json")
 firebase_admin.initialize_app(cred, {
-    "databaseURL": "https://your-project.firebaseio.com"
+    "databaseURL": "https://track-lace-default-rtdb.firebaseio.com"
 })
 
 app = FastAPI()
@@ -13,8 +13,8 @@ app = FastAPI()
 async def upload(req: Request):
     data = await req.json()
 
-    ref = db.reference("devices/a9g_01")
+    ref = db.reference("d01")
     ref.push(data)
 
-    return {"status": "ok"}
+    return {"output": "masuk"}
 
