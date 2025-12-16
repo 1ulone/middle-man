@@ -23,6 +23,6 @@ async def upload(request: Request):
     data = await request.json()
     ref = db.reference("/device_data")
     # Push data to Firebase
-    new_ref = ref.push(data)
-    return {"ok": True, "firebase_key": new_ref.key}
+    ref.push(data)
+    return {"ok": True}
 
