@@ -28,5 +28,4 @@ async def upload(req: Request):
     ref = db.reference("d01")
     ref.push(data)
 
-    return {"output": "masuk"}
-
+    return {"ok": True}
